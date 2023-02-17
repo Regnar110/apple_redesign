@@ -28,4 +28,3 @@ export default Home
 
 
 //Pages directory to cos na zasadzie wbudowane routera w next.js - coś jak React Router DOM W vanilla React.js
-

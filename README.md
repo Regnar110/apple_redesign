@@ -34,9 +34,11 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
     *NEXT.JS
     *TAILWIND CSS
     *TAILWIND PRETTIER PLUGIN
+    *NEXT-SANITY ( for GROQ query language usage)
 
 # CMS
 *SANITY
 
 # OTHERS
 *HERO ICONS
+*HEADLESS-UI

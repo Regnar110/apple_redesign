@@ -25,4 +25,10 @@
             before:transform before:rounded-bl before:bg-black before:transition-all
             before:duration-200 hover:before:scale-x-100
     }
+
+    .borderGradient {
+        @apply text-center pb-1 bg-gradient-to-r from-[#ec4899] to-[#8b5cf6] 
+        bg-left-bottom bg-no-repeat bg-[length:100%_2px]
+        
+    }
 }

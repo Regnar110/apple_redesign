@@ -1,10 +1,16 @@
-import type { GetServerSideProps, NextPage } from 'next'
+import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Landing from '../components/Landing'
 import { Tab } from '@headlessui/react'
+import { fetchCategories } from '../utils/fetchCategories'
 
-const Home: NextPage = () => {
+interface Props {
+  categories: Category[]
+}
+
+const Home = ({categories}:Props) => {
+  console.log(categories)
   return (
     <div>
       <Head>
@@ -23,11 +29,12 @@ const Home: NextPage = () => {
           </h1>
           <Tab.Group>
             <Tab.List className="flex justify-center">
-              {/* {categories.map((category) => (
+              {categories.map((category) => (
                 <Tab
                   key={category._id}
                   id={category._id}
                   className={({ selected }) =>
+                  // Selected jest dostarczane przed headless-ui jako prop do komponentu Tab
                     `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                       selected
                         ? "borderGradient bg-[#35383C] text-white"
@@ -35,9 +42,9 @@ const Home: NextPage = () => {
                     }`
                   }
                 >
-                  Iphone
+                  {category.title}
                 </Tab>
-              ))} */}
+              ))}
             </Tab.List>
             <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
               {/* <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
@@ -54,13 +61,13 @@ const Home: NextPage = () => {
 
 export default Home
 
-
+ 
 //Pages directory to cos na zasadzie wbudowane routera w next.js - coś jak React Router DOM W vanilla React.js
 
 
 //BACKEND CODE
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   //getServerSideProps jest to funkcja służąca do SSR, która pre-renderuje
   //stronę przy każdym żądaniu w której jest exportowana używając do tego
   // danych zwróconych z tej funkcji. Jest to użyteczne gdy chcemy pobierać dane 
@@ -70,8 +77,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
   // stron. TO właśnie na ten middle server zostaną pobrane dane i tam zostanie 
   //wyrenderowana strona, która potem będzie mgoła być dostarczona użytkownikowi bez czekania
 
-  // const categories = await fetchCategories();
+  const categories = await fetchCategories();
   return {
-    props:{}
+    props:{
+      categories
+    }
   }
+
+  //wszystko tutaj zwrócone jest dostępne na stronie HOme czyli w komponencie home jako propsy
 }

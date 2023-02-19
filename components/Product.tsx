@@ -8,10 +8,14 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 interface Props {
     product: Products;
-
 }
 
 const Product = ({product}:Props) => {
+
+  const addItemToBasket = () => {
+  
+  }
+  
   return (
     <div className='flex h-fit w-[320px] select-none flex-col 
     space-y-3 rounded-xl bg-[#E7ECEE] p-8 md:h-[500px] md:w-[400px] md:p-10'>
@@ -30,7 +34,7 @@ const Product = ({product}:Props) => {
         </div>
         <div className='flex h-16 w-16 flex-shrink-0 cursor-pointer items-center
             justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500
-            md:h-[70px] md:w-[70px]'>
+            md:h-[70px] md:w-[70px]' onClick={addItemToBasket}>
             <ShoppingCartIcon className='h-8 w-8 text-white'/>
         </div>
       </div>

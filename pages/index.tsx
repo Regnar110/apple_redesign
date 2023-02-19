@@ -7,6 +7,7 @@ import { Tab } from '@headlessui/react'
 import { fetchCategories } from '../utils/fetchCategories'
 import { fetchProducts } from '../utils/fetchProducts'
 import { Category, Products } from '../typings'
+import { Zoom } from 'react-awesome-reveal'
 
 interface Props {
   categories: Category[]
@@ -32,10 +33,13 @@ const Home = ({categories, products}:Props) => {
       </main>
       <section className='relative z-40 -mt-[100vh] min-h-screen bg-[#1B1B1B]'>
         <div className='space-y-10 py-16'>
-          <h1 className='text-center txt-4xl font-medium 
-            tracking-wide text-white md:text-5xl'>
-            New Promos
-          </h1>
+          <Zoom triggerOnce={true}>
+            <h1 className='text-center txt-4xl font-medium 
+              tracking-wide text-white md:text-5xl'>
+              New Promos
+            </h1>            
+          </Zoom>
+
           <Tab.Group>
             <Tab.List className="flex justify-center">
               {categories.map((category) => (

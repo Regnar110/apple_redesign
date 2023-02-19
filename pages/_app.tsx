@@ -5,10 +5,11 @@ import { Provider } from 'react-redux'
 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return 
+  return (
     <Provider store={store}>
         <Component {...pageProps} />
     </Provider>
+  )
 }
 
 export default MyApp

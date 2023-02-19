@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import iphone from '../images/iphone.png'
 import Button from '../components/Button'
+import { Slide } from 'react-awesome-reveal'
 const Landing = () => {
   return (
     <section className='sticky top-0 mx-auto flex h-screen max-w-[1350px]
@@ -21,10 +22,12 @@ const Landing = () => {
                 <a className='link'>Learn more</a>
             </div>
         </div>
+        <Slide>
         <div className='relative hidden h-[450px] w-[450px] transition-all
         duration-500 md:inline lg:h-[650px] lg:w-[600px]'>
             <Image src={iphone} fill style={{objectFit:"contain"}} alt="iphone image"/>
         </div>
+        </Slide>
     </section>
   )
 }

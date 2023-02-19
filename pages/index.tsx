@@ -2,15 +2,24 @@ import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Landing from '../components/Landing'
+import Product from '../components/Product'
 import { Tab } from '@headlessui/react'
 import { fetchCategories } from '../utils/fetchCategories'
+import { fetchProducts } from '../utils/fetchProducts'
+import { Category, Products } from '../typings'
 
 interface Props {
   categories: Category[]
+  products: Products[]
 }
 
-const Home = ({categories}:Props) => {
-  console.log(categories)
+const Home = ({categories, products}:Props) => {
+  const showProducts = (category: number) => {
+    return products
+      .filter((product) => product.category._ref === categories[category]._id)
+      .map((product) => <Product product={product} key={product._id} />); // filter products by category
+  };
+
   return (
     <div>
       <Head>
@@ -47,10 +56,10 @@ const Home = ({categories}:Props) => {
               ))}
             </Tab.List>
             <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
-              {/* <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
+              <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(1)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(2)}</Tab.Panel>
-              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel> */}
+              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
         </div>
@@ -77,12 +86,16 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
   // stron. TO właśnie na ten middle server zostaną pobrane dane i tam zostanie 
   //wyrenderowana strona, która potem będzie mgoła być dostarczona użytkownikowi bez czekania
 
-  const categories = await fetchCategories();
+  const categories = await fetchCategories(); 
+  const products = await fetchProducts();
   return {
     props:{
+      products,
       categories
     }
   }
+
+ 
 
   //wszystko tutaj zwrócone jest dostępne na stronie HOme czyli w komponencie home jako propsy
 }

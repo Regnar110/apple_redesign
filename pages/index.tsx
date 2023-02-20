@@ -8,6 +8,7 @@ import { fetchCategories } from '../utils/fetchCategories'
 import { fetchProducts } from '../utils/fetchProducts'
 import { Category, Products } from '../typings'
 import { Zoom } from 'react-awesome-reveal'
+import Basket from '../components/Basket'
 
 interface Props {
   categories: Category[]
@@ -28,6 +29,9 @@ const Home = ({categories, products}:Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
+
+      <Basket />
+
       <main className='relative h-[200vh] bg-[#E7ECEE]'>
         <Landing />
       </main>

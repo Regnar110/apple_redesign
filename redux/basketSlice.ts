@@ -73,7 +73,7 @@ export const selectBasketWidthId = (state: RootState, id:string) => {
 // Poniżej zwracamy skumulowaną cenę wszystkich produktów w koszyku
 export const selectBasketTotal = (state: RootState) => {
     return state.basket.items.reduce((total:number, item: Products) => {
-        total += item.price
+        return total += item.price
         //operator += dodaje wartość po prawej do zmiennej lub właściwości
         //po lewej i przypisuje wynik do zmiennej lub własciwości po lewej
         //czyli tu np 0 +200, 200+ 499, 699 +200, 899+ 1000 itd...

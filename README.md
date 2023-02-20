@@ -42,3 +42,4 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 # OTHERS
 *HERO ICONS
 *HEADLESS-UI
+*REACT-HOT-TOAST for  notifications

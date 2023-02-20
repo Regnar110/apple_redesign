@@ -2,17 +2,27 @@ import React from 'react'
 import { Products } from '../typings'
 import Image from 'next/image';
 import { urlFor } from '../sanity' // funkcja pomocnicza sanity, która umożliwia
-import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 // wyświetlanie zdjęć pobranych z sanity CMS . 
 //Funkcja ta generuje url dla assetu obrazka
+import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { useDispatch } from 'react-redux';
+import { addToBasket } from '../redux/basketSlice';
+import { toast } from 'react-hot-toast';
+
 
 interface Props {
     product: Products;
 }
 
 const Product = ({product}:Props) => {
+  const dispatch = useDispatch()
 
   const addItemToBasket = () => {
+      dispatch(addToBasket(product));
+
+      toast.success(`${product.title} added to basket`, {
+        position: "bottom-center"
+      })
   
   }
   

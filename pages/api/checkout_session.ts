@@ -3,7 +3,6 @@ import Stripe from "stripe";
 import { urlFor } from "../../sanity";
 import { Products } from "../../typings";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
   apiVersion: "2022-11-15",
 });
 
@@ -14,7 +13,7 @@ export default async function handler(
   if (req.method === "POST") {
     const items: Products[] = req.body.items;
 
-    // This is the shape in which stripe expects the data to be
+    // Transformitems to obiekt, który przedstawia strukture danych, której wymaga Stipe
     const transformedItems = items.map((item) => ({
       price_data: {
         currency: "usd",

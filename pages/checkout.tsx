@@ -4,21 +4,14 @@ import Header from "../components/Header";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-// import Currency from "react-currency-formatter";
 import { useSelector } from "react-redux";
-// import Stripe from "stripe";
 import Button from "../components/Button";
-// import CheckoutProduct from "../components/CheckoutProduct";
 import { selectBasketItems, selectBasketTotal } from "../redux/basketSlice";
-import { Produced } from 'immer/dist/internal';
 import { Products } from '../typings';
 import CheckoutProduct from '../components/CheckoutProduct'
 import { Stripe } from 'stripe';
 import { fetchPostJSON } from '../utils/api-helpers';
 import getStripe from "../utils/get-stripejs"
-// import CheckoutProduct from "../components/CheckoutProduct";
-// import { fetchPostJSON } from "../utils/api-helpers";
-// import getStripe from "../utils/get-stripejs";
 
 
 const Checkout= () => {

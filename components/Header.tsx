@@ -9,12 +9,10 @@ import {
   UserIcon,
   MagnifyingGlassIcon
 } from '@heroicons/react/24/outline'
-
-
-
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 const Header = () => {
-  const session = false;
+  const {data: session} = useSession()
   const items = useSelector(selectBasketItems)
 
   return (
@@ -60,18 +58,19 @@ const Header = () => {
           {session ? (
             <Image 
               src={
-                // session.user?.image ||
+                session.user?.image ||
                 "https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png" 
               }
               alt="avatar"
               className='cursor-pointer rounded-full'
               width={34}
               height={34}
+              onClick={() => signOut()}
             />
             )
             :
             <UserIcon className='headerIcon'
-              // onClick={() => signIn()}
+              onClick={() => signIn()}
             />
           }
         </div>

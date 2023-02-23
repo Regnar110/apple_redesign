@@ -10,6 +10,7 @@ import Button from '../components/Button'
 import { GetServerSideProps } from 'next'
 import { StripeProduct } from '../typings'
 import { fetchLineItems } from '../utils/fetchLineItems'
+import { useSession } from 'next-auth/react'
 
 interface Props {
     products: StripeProduct[]
@@ -24,7 +25,7 @@ const Success = ({products}: Props) => {
 
     const [mounted, setMounted] = useState(false)
     const [showOrderSummary, setShowOrderSummary] = useState(false)
-
+    const { data: session } = useSession();
     useEffect(() => {
         setMounted(true)
     },[])
@@ -90,7 +91,7 @@ const Success = ({products}: Props) => {
             </p>
             <h4 className="text-lg">
               Thank you{" "}
-              {/* {session ? session.user?.name?.split(" ")[0] : "Guest"} */}
+              {session ? session.user?.name?.split(" ")[0] : "Guest"}
             </h4>
           </div>
         </div>

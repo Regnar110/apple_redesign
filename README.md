@@ -43,3 +43,4 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 *HERO ICONS
 *HEADLESS-UI
 *REACT-HOT-TOAST for  notifications
+*REACT-RESPONSIVE for conditional media queries

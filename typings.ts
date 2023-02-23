@@ -39,5 +39,21 @@ export interface Products {
    image: Image[]
 }
 
+export interface StripeProduct {
+   id: string;
+   amount_discount: number;
+   amount_subtotal: number;
+   amount_tax: number;
+   amount_total: number;
+   currency: string;
+   description: string;
+   object: string;
+   quantity: number;
+   price: {
+      unit_amount: number;
+   };
+}
+
 // d.ts syntax oznacza że środowisko aplikacji zna ten plik i nie musimy
 // exportować zawartych tu rzecyz np interfejsów
+
